@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<h2>Export des pointages</h2>
+<form action="{{ path('tableau_admin_filtre_date') }}" method="post">
+Date minimum : <input type="date" id="dateDebut" name="dateDebut">
+Date maximum : <input type="date" id="dateFin" name="dateFin">
+<input type="submit" value="Filtrer entre deux dates">
+</form>
+{% if listeDePointage == null %}
+<a href="{{ path('tableau_pointage') }}">Effacer le filtre</a>
+{% endif %}
+{% include 'tableauPointage.html.twig' %}
+<script src="{{ asset('js/initAdmin.js') }}"></script>
+{% endblock %}

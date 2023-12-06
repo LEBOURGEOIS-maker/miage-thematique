@@ -1,0 +1,128 @@
+
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+	<a class="sidebar-brand d-flex align-items-center justify-content-center" href="">
+		c<div class="sidebar-brand-icon">
+			<i class="far fa-hourglass"></i>
+		</div>
+		ronos <div class="sidebar-brand-text mx-1">ADMIN</div>
+	</a>
+	<hr class="sidebar-divider my-0">
+
+	<li class="nav-item active justify-content-center">
+    <a class="nav-link" href="{{ path('panelAdmin') }}">
+      <i class="fas fa-fw fa-tachometer-alt"></i>
+      <span>Dashboard</span></a>
+  </li>
+
+	<hr class="sidebar-divider">
+
+	<div class="sidebar-heading">
+		Interface
+	</div>
+	<li class="nav-item border-left-success">
+		<a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+			<i class="fas fa-list-ul text-success"></i>
+			<span>Pointages</span>
+		</a>
+		<div id="collapseOne" class="collapse show" aria-labelledby="collapseOne" data-parent="">
+			<div class="bg-white py-2 px-1 collapse-inner rounded border-bottom-success">
+				<a class="collapse-item" href="{{ path('panelAdminPointage') }}">Pointages du jour</a>
+				<a class="collapse-item" href="{{ path('panelAdminPointage') }}">Les pointages</a>
+				<a class="collapse-item" href="{{ path('panelAdminJustificationAbsences') }}">Les justifications d'absences</a>
+				<a class="collapse-item" href="{{ path('panelAdminSemaine', {dateD: "monday this week"|date('Y.m.d'), dateF: "sunday this week"|date('Y.m.d')}) }}">Cette semaine</a>
+			</div>
+		</div>
+		<div id="collapseOne" class="collapse show" aria-labelledby="collapseOne" data-parent="">
+			<div class="bg-white py-2 px-1 px-2 collapse-inner rounded border-bottom-success">
+				<h6 class="collapse-header">Par N° Semaine:</h6>
+				<div class="navbar-search">
+					<form class="input-group" name="{{ formPointage.vars.full_name }}" method="POST">
+						{{ form_errors(formPointage) }}
+						{{ form_widget(formPointage.semaine) }}
+						{{ form_widget(formPointage.annee) }}
+						<div class="input-group-append">
+							<button type="submit" class="btn btn-light btn-sm" name="{{ formPointage.submit.vars.full_name }}" id="{{ formPointage.submit.vars.id }}">
+								<i class="fas fa-search fa-sm"></i>
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div id="collapseOne" class="collapse show" aria-labelledby="collapseOne" data-parent="">
+			<div class="bg-white py-2 px-1 collapse-inner rounded border-bottom-success">
+				<h6 class="collapse-header">Par période:</h6>
+				<div class="navbar-search">
+					<form class="input-group" name="{{ formPeriode.vars.full_name }}" method="POST">
+						{{ form_errors(formPeriode) }}
+						{{ form_widget(formPeriode.periode) }}
+						<div class="input-group-append">
+							<button type="submit" class="btn btn-light btn-sm" name="{{ formPeriode.submit.vars.full_name }}" id="{{ formPeriode.submit.vars.id }}">
+								<i class="fas fa-search fa-sm"></i>
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</li>
+	<hr class="sidebar-divider my-O">
+	<li class="nav-item border-left-warning">
+		<a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+			<i class="fas fa-exclamation-triangle text-warning"></i>
+			<span>Anomalies</span>
+		</a>
+		<div id="collapseTwo" class="collapse show" aria-labelledby="collapseTwo" data-parent="">
+			<div class="bg-white py-2 px-1 collapse-inner rounded border-bottom-warning">
+				<a class="collapse-item" href="{{ path('panelAdminAnomalie') }}">Anomalies du jour</a>
+				<a class="collapse-item" href="{{ path('panelAdminSemaineAnomalie', {dateD: "monday this week"|date('Y.m.d'), dateF: "sunday this week"|date('Y.m.d')}) }}">Cette semaine</a>
+			</div>
+		</div>
+		<div id="collapseTwo" class="collapse show" aria-labelledby="collapseTwo" data-parent="">
+			<div class="bg-white py-2 px-1 collapse-inner rounded border-bottom-warning">
+				<div class="navbar-search">
+					<form class="input-group" name="{{ formAnomalie.vars.full_name }}" method="POST">
+						{{ form_errors(formAnomalie) }}
+						{{ form_widget(formAnomalie.semaine) }}
+						{{ form_widget(formAnomalie.annee) }}
+						<div class="input-group-append">
+							<button type="submit" class="btn btn-light btn-sm" name="{{ formAnomalie.submit.vars.full_name }}" id="{{ formAnomalie.submit.vars.id }}">
+								<i class="fas fa-search fa-sm"></i>
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div id="collapseTwo" class="collapse show" aria-labelledby="collapseTwo" data-parent="">
+			<div class="bg-white py-2 px-1 collapse-inner rounded border-bottom-warning">
+				<h6 class="collapse-header">Anomalies par période:</h6>
+				<div class="navbar-search">
+					<form class="input-group" name="{{ formPeriodeAnomalie.vars.full_name }}" method="POST">
+						{{ form_errors(formPeriodeAnomalie) }}
+						{{ form_widget(formPeriodeAnomalie.periode) }}
+						<div class="input-group-append">
+							<button type="submit" class="btn btn-light btn-sm" name="{{ formPeriodeAnomalie.submit.vars.full_name }}" id="{{ formPeriodeAnomalie.submit.vars.id }}">
+								<i class="fas fa-search fa-sm"></i>
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</li>
+	<hr class="sidebar-divider my-O">
+	<li class="nav-item border-left-info">
+		<a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+			<i class="fas fa-th-list text-info"></i>
+			<span>Listes</span>
+		</a>
+		<div id="collapseTwo" class="collapse show" aria-labelledby="collapseTwo" data-parent="">
+			<div class="bg-white py-2 px-1 collapse-inner rounded border-bottom-info">
+				<a class="collapse-item" href="{{ path('panelAdminCoursListe') }}">Par Cours</a>
+				<a class="collapse-item" href="{{ path('panelAdminProfsListe') }}">Par Enseignant</a>
+				<a class="collapse-item" href="{{ path('panelAdminEtudiantsListe') }}">Par Elève</a>
+			</div>
+		</div>
+</ul>

@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CHRONOS ADMIN - Dashboard{% endblock %}
+{% block stylesheetsAdmin %}
+<link rel="stylesheet" href={{ asset('css/admin.css') }}>
+<link rel="stylesheet" href={{ asset('css/sb-admin-2.min.css') }}>
+{% endblock %}
+
+{% block body %}
+<div id="wrapper">
+  {% include 'sidebar.html.twig' %}
+  <div id="content-wrapper" class="d-flex flex-column">
+    <div id="content">
+      <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+        <h4 class="mb-0 text-gray-800">
+          <span class="text-info">Pointages</span>
+          <span class="small"><i class="fas fa-grip-lines-vertical"></i> Période du {{ dateDebut|date('d/m/Y') }} au {{ dateFin|date('d/m/Y') }}</span>&emsp;
+          <a href="{{ path('panelAdminPeriodeAnomalie', {dateD: dateDebut|date('d.m.Y'), dateF: dateFin|date('d.m.Y')}) }}" class="btn btn-primary btn-icon-split btn-sm">
+            <span class="icon text-white-50">
+              <i class="fas fa-search"></i>
+            </span>
+            <span class="text">Voir toutes les anomalies sur la période</span>
+          </a>
+        </h4>
+        {% include 'topbar.html.twig' %}
+      </nav>
+      <div class="container-fluid">
+        {% include 'cardsPointages.html.twig' %}
+        <div class="card shadow mb-4">
+          <div class="card-body">
+              <div class="table-responsive">
+                  {% include 'tableauPointage.html.twig' %}
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Footer -->
+  </div>
+</div>
+<a class="scroll-to-top rounded" href="#page-top">
+  <i class="fas fa-angle-up"></i>
+</a>
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('js/initAdmin.js') }}"></script>
+    <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
+{% endblock %}

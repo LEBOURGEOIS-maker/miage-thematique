@@ -1,0 +1,121 @@
+index:
+    path: /
+    defaults: { _controller: 'App\Controller\DefaultController::index' }
+# pointageFiltre:
+#     path: /pointageFiltre
+#     defaults: { _controller: 'App\Controller\PointageFiltreController::create' }
+registration:
+    path: /register
+    controller: App\Controller\RegistrationController::register
+login:
+    path: /login
+    controller: App\Controller\SecurityController::login
+logout:
+    path: /logout
+    controller: App\Controller\SecurityController::logout
+#Route pour les vues étudiantes
+panelEtudiant:
+    path: /etudiant/panel
+    controller: App\Controller\PanelEtudiantController::panelEtudiant
+etudiantListeJustificationsAbs:
+    path: /etudiant/listejustificationsAbs
+    controller: App\Controller\PanelEtudiantController::listejustificationsAbs
+pointage:
+    path: /etudiant/pointage
+    controller: App\Controller\PointageController::show
+pointageWeek:
+    path: /etudiant/pointage/semaine
+    controller: App\Controller\PanelEtudiantController::showPointageWeek
+showPointageTotaux:
+    path: /etudiant/pointage/historique
+    controller: App\Controller\PanelEtudiantController::showPointageTotaux
+justificationAbsence:
+    path: /etudiant/absence/justificationAbsence
+    controller: App\Controller\PanelEtudiantController::justificationAbsence
+justificationSuccess:
+    path: /etudiant/absence/justificationSuccess
+    controller: App\Controller\PanelEtudiantController::justificationSuccess
+#Route pour les vues prof
+profListeCours:
+    path: /prof/profListeCours
+    controller: App\Controller\PanelProfController::profListeCours
+emargementsParCours:
+    path: /prof/emargementsParCours/{idCours}
+    controller: App\Controller\PanelProfController::emargementsParCours
+listeEmargementsPassesParCours:
+    path: /prof/listeEmargementsPassesParCours/{idCours}/{idDate}/{idCreneau}
+    controller: App\Controller\PanelProfController::listeEmargementsPassesParCours
+profUpdateState:
+    path: /prof/listeEmargementsPassesParCours/AbsenceUpdateState
+    controller: App\Controller\PanelProfController::updateState
+profAbsenceSendMail:
+    path: /prof/listeEmargementsPassesParCours/AbsenceSendMail
+    controller: App\Controller\PanelProfController::AbsenceSendMail
+pointageViewerTeacher:
+    path: /prof/pointageViewerTeacher
+    controller: App\Controller\PanelProfController::pointageViewerTeacher
+valider_pointage:
+    path: /prof/valider_pointage/{id}
+    controller: App\Controller\PointageDuJourController::validerPointage
+edit_pointage:
+    path: /prof/edit_pointage/{id}
+    controller: App\Controller\PointageDuJourController::editPointage
+#ADMIN RAPPORT VIEW
+panelAdmin:
+    path: /admin/panel
+    controller: App\Controller\PanelAdminController::panelAdmin
+panelAdminPointage:
+    path: /admin/panel/pointage
+    controller: App\Controller\PanelAdminPointageController::panelAdminPointage
+panelAdminUpdateState:
+    path: /admin/panel/AbsenceUpdateState
+    controller: App\Controller\PanelAdminAbsencesController::AbsenceUpdateState
+panelAdminAbsenceSendMail:
+    path: /admin/panel/AbsenceSendMail
+    controller: App\Controller\PanelAdminAbsencesController::AbsenceSendMail
+panelAdminJustificationAbsences:
+    path: /admin/panel/justificationsAbsences
+    controller: App\Controller\PanelAdminAbsencesController::justificationsAbsences
+panelAdminAnomalie:
+    path: /admin/panel/anomalie
+    controller: App\Controller\PanelAdminAnomalieController::panelAdminAnomalie
+panelAdminSemaine:
+    path: /admin/panel/semaine/{dateD}-{dateF}
+    controller: App\Controller\PanelAdminSemaineController::panelAdminSemaine
+panelAdminSemaineAnomalie:
+    path: /admin/panel/semaine/anomalie/{dateD}-{dateF}
+    controller: App\Controller\PanelAdminSemaineAnomalieController::panelAdminSemaineAnomalie
+panelAdminPeriode:
+    path: /admin/panel/periode/{dateD}-{dateF}
+    controller: App\Controller\PanelAdminPeriodeController::panelAdminPeriode
+panelAdminPeriodeAnomalie:
+    path: /admin/panel/periode/anomalie/{dateD}-{dateF}
+    controller: App\Controller\PanelAdminPeriodeAnomalieController::panelAdminPeriodeAnomalie
+panelAdminCoursListe:
+    path: /admin/panel/coursListe
+    controller: App\Controller\PanelAdminController::coursListe
+panelAdminProfsListe:
+    path: /admin/panel/profsListe
+    controller: App\Controller\PanelAdminController::profsListe
+panelAdminEtudiantsListe:
+    path: /admin/panel/etudiantsListe
+    controller: App\Controller\PanelAdminController::etudiantsListe
+adminEtudiantsEtProfsParCours:
+    path: /admin/panel/adminEtudiantsEtProfsParCours/{idCours}
+    controller: App\Controller\PanelAdminController::adminEtudiantsEtProfsParCours
+adminCoursParProf:
+    path: /admin/panel/adminCoursParProf/{idProf}
+    controller: App\Controller\PanelAdminController::adminCoursParProf
+adminCoursParEtudiant:
+    path: /admin/panel/adminCoursParEtudiant/{idEtudiant}
+    controller: App\Controller\PanelAdminController::adminCoursParEtudiant
+    #controller: App\Controller\DefaultController::index
+#app_lucky_number:
+#    path: /lucky/number
+#    controller: App\Controller\TestController::number
+_wdt:
+    resource: '@WebProfilerBundle/Resources/config/routing/wdt.xml'
+    prefix: /_wdt
+web_profiler_profiler:
+    resource: '@WebProfilerBundle/Resources/config/routing/profiler.xml'
+    prefix: /_profiler

@@ -1,0 +1,41 @@
+{{ form_start(form) }}
+    {{ form_row(form.formation) }}    {# <select id="pointage_formation" #}
+    {{ form_row(form.cours) }} {# <select id="pointage_cours" #}
+{{ form_end(form) }}
+
+<script type="text/javascript">
+  $formation.change(function(){
+        var $formation = $('#pointage_formation');
+        // When sport gets selected ...
+        $formation.change(function() {
+
+        });
+  });
+</script>
+
+
+<script>
+var $formation = $('#pointage_formation');
+// When sport gets selected ...
+$formation.change(function() {
+  // ... retrieve the corresponding form.
+  var $form = $(this).closest('form');
+  // Simulate form data, but only include the selected sport value.
+  var data = {};
+  data[$formation.attr('name')] = $formation.val();
+  // Submit data via AJAX to the form's action path.
+  $.ajax({
+    url : $form.attr('action'),
+    type: $form.attr('method'),
+    data : data,
+    success: function(html) {
+      // Replace current position field ...
+      $('#pointage_cours').replaceWith(
+        // ... with the returned one from the AJAX response.
+        $(html).find('#pointage_cours')
+      );
+      // Position field now displays the appropriate positions.
+    }
+  });
+});
+</script>

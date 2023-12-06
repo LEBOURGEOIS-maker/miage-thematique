@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CHRONOS ADMIN - Dashboard{% endblock %}
+{% block stylesheetsAdmin %}
+<link rel="stylesheet" href={{ asset('css/sb-admin-2.min.css') }}>
+{% endblock %}
+
+{% block body %}
+<!-- Page Content -->
+  <div class="container">
+
+    <!-- Jumbotron Header -->
+    <header class="jumbotron my-4">
+	<a href="{{ path('logout') }}" class="btn btn-sm btn-danger float-right">Quitter</a>
+      <h1 class="display-3">Justifier une absence</h1><br /><br />
+      <!-- <p class="lead">Sélectionnez le cours pour visualiser les pointages effectués aujourd'hui pour ce cours.</p> -->
+
+			<div class="row justify-content-md-center">
+				<div class="col-xl-6 col-md-3 mb-4">
+					<div class="card border-left-primary shadow h-100 py-2">
+						<div class="card-body">
+							<div class="row no-gutters align-items-center">
+								<div class="login d-flex align-items-center py-5">
+									<div class="container">
+										<div class="row">
+											<div class="col-md-12 col-lg-12 mx-auto custom-fade">
+											<section class="pricing">
+												<div class="container">
+													La justification de votre absence a bien été transmise à l'administration.<br />
+													<div class="row" style="margin-top:15px">
+														<div class="col-lg-12" style="margin-bottom:6px;">
+															<a href="{{ path('etudiantListeJustificationsAbs') }}" class="btn btn-block btn-info">Voir la liste de mes absences justifiées</a>
+														</div>
+														<div class="col-lg-12">
+															<a href="{{ path('panelEtudiant') }}" class="btn btn-block btn-primary">Retour à la page d'accueil</a>
+														</div>
+													</div>
+											</section>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+    </header>
+  </div>
+  <!-- /.container -->
+<script src="{{ asset('js/initProf.js') }}"></script>
+<script>/*
+setTimeout(function () {
+  if(document.getElementByID("pointage_filtre_cours")!="")
+		document.forms[0].submit();
+}, 5000);*/
+</script>
+{% endblock %}

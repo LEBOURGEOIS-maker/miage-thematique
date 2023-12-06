@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Chronos - Connexion{% endblock %}
+{% block stylesheets %}
+<link rel="stylesheet" href={{ asset('css/loginRegister.css') }}>
+{% endblock %}
+{% block body %}
+<div class="container-fluid">
+  <div class="row no-gutter">
+    <div class="d-none d-md-flex col-md-4 col-lg-7 bg-image"></div>
+    <div class="col-md-8 col-lg-5">
+      <div class="login d-flex align-items-center py-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-9 col-lg-8 mx-auto custom-fade">
+              <h3 class="login-heading mb-4">Chronos - Connexion</h3>
+              <form method="post">
+                  {% if error %}
+                      <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                  {% endif %}
+                  <div class="form-label-group">
+                    <input type="text" value="{{ last_username }}" name="numeroEtudiant" id="inputNumEtudiant" class="form-control" placeholder="Numéro étudiant" maxlength="8" onkeypress="return isNumber(event)" required autofocus >
+                    <label for="inputNumEtudiant">Numéro étudiant</label>
+                  </div>
+
+                  <div class="form-label-group">
+                    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Mot de passe" required>
+                    <label for="inputPassword">Mot de passe</label>
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                  </div>
+
+                  <!-- <div class="custom-control custom-checkbox mb-3">
+                    <label>
+                        <input type="checkbox" name="_remember_me"> Se souvenir de moi
+                    </label>
+                  </div> -->
+                  <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2 rounded-pill" type="submit">Se connecter</button>
+                  <div class="text-center small">Pas de compte ? <a href="{{ path('registration') }}">Inscrivez-vous</a></div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block javascripts %}
+<script type="text/javascript">
+function isNumber(evt){
+  var charCode = (evt.which) ? evt.which : event.keyCode
+  if (charCode > 31 && (charCode < 48 || charCode > 57))
+      return false;
+  return true;
+}
+</script>
+{% endblock %}

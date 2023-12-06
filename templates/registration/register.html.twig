@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Chronos - Inscription{% endblock %}
+{% block stylesheets %}
+<link rel="stylesheet" href={{ asset('css/loginRegister.css') }}>
+{% endblock %}
+{% block body %}
+<div class="container-fluid">
+  <div class="row no-gutter">
+    <div class="d-none d-md-flex col-md-4 col-lg-7 bg-image"></div>
+    <div class="col-md-8 col-lg-5">
+      <div class="login d-flex align-items-center py-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-9 col-lg-8 mx-auto custom-fade">
+              <h3 class="login-heading mb-4">Chronos - Inscription</h3>
+              {{ form_start(registrationForm) }}
+                <div class="form-label-group">
+                  {{ form_widget(registrationForm.numeroEtudiant) }}
+                  {{ form_label(registrationForm.numeroEtudiant) }}
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <div class="form-label-group">
+                      {{ form_widget(registrationForm.prenomUtilisateur) }}
+                      {{ form_label(registrationForm.prenomUtilisateur) }}
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-label-group">
+                      {{ form_widget(registrationForm.nomUtilisateur) }}
+                      {{ form_label(registrationForm.nomUtilisateur) }}
+                    </div>
+                  </div>
+                </div>
+                <div class="form-label-group">
+                  {{ form_widget(registrationForm.email) }}
+                  {{ form_label(registrationForm.email) }}
+                </div>
+                <div class="form-label-group">
+                  {{ form_widget(registrationForm.formation) }}
+                </div>
+                <div class="form-label-group">
+                  {{ form_widget(registrationForm.plainPassword) }}
+                  {{ form_label(registrationForm.plainPassword) }}
+                </div>
+                <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">S'inscrire</button>
+                <div class="text-center small">Déja inscrit ?! <a href="{{ path('login') }}">Connectez-vous</a></div>
+              {{ form_end(registrationForm) }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block javascripts %}
+<script type="text/javascript">
+function isNumber(evt){
+  var charCode = (evt.which) ? evt.which : event.keyCode
+  if (charCode > 31 && (charCode < 48 || charCode > 57))
+      return false;
+  return true;
+}
+</script>
+{% endblock %}

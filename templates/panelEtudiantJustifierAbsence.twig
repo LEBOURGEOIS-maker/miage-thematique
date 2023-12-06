@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CHRONOS ADMIN - Dashboard{% endblock %}
+{% block stylesheetsAdmin %}
+<link rel="stylesheet" href={{ asset('css/sb-admin-2.min.css') }}>
+{% endblock %}
+
+{% block body %}
+<!-- Page Content -->
+  <div class="container">
+
+    <!-- Jumbotron Header -->
+    <header class="jumbotron my-4">
+	<a href="{{ path('logout') }}" class="btn btn-sm btn-danger float-right">Quitter</a>
+      <h1 class="display-3">Justifier une absence</h1><br /><br />
+      <!-- <p class="lead">Sélectionnez le cours pour visualiser les pointages effectués aujourd'hui pour ce cours.</p> -->
+
+			<div class="row justify-content-md-center">
+				<div class="col-xl-6 col-md-3 mb-4">
+					<div class="card border-left-primary shadow h-100 py-2">
+						<div class="card-body">
+							<div class="row no-gutters align-items-center">
+								<div class="login d-flex align-items-center py-5">
+									<div class="container">
+										<div class="row">
+											<div class="col-md-12 col-lg-12 mx-auto custom-fade">
+											<section class="pricing">
+												<div class="container">
+												{{ form_start(form) }}
+												<span>Début de l'absence</span>
+												<div class="form-label-group" style="margin:5px; border: dashed grey 1px; padding-bottom:15px">
+													<div style="padding-left:10px">
+														<span style="margin: 0px 0px 10px 10px; padding-left:10px;">{{ form_widget(form.dateDebut) }}</span>
+														<span style="margin: 5px 0px 10px 10px; padding-bottom:10px">{{ form_widget(form.heureDebut) }}</span>
+													</div>
+												</div>
+												<span>Fin de l'absence</span>
+												<div class="form-label-group" style="margin:5px; border: dashed grey 1px; padding-bottom:15px">
+													<div style="padding-left:10px">
+														<span style="margin: 5px 0px 10px 10px;">{{ form_widget(form.dateFin) }}</span>
+														<span style="margin: 5px 0px 10px 10px; padding-bottom:10px">{{ form_widget(form.heureFin) }}</span>
+													</div>
+												</div>
+												<div class="form-label-group" style="margin-bottom:10px; margin:5px; padding-bottom:15px">
+													<span>Justificatif</span>
+													<div style="padding-top:5px">
+													{{ form_widget(form.lienFichier) }}
+													</div>
+												</div>
+												<div class="form-label-group">
+													{{ form_widget(form.connection) }} <a href="{{ path('panelEtudiant') }}" class="btn btn-light text-uppercase ml-2 px-2">Annuler</a>
+												</div>
+												{{ form_end(form) }}
+												</div>
+											</section>
+											</div>
+											
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+    </header>
+  </div>
+  <!-- /.container -->
+<script src="{{ asset('js/initProf.js') }}"></script>
+<script>/*
+setTimeout(function () {
+  if(document.getElementByID("pointage_filtre_cours")!="")
+		document.forms[0].submit();
+}, 5000);*/
+</script>
+{% endblock %}

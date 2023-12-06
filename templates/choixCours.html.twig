@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+{% block head %}
+{% endblock %}
+{% block body %}
+{{ form(form) }}
+{% include 'tableauProf.html.twig' %}
+<script src="{{ asset('js/initAdmin.js') }}"></script>
+<script>
+setTimeout(function () {
+		location.reload()
+}, 30000);
+</script>
+{% endblock %}

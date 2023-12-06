@@ -1,0 +1,39 @@
+<div class="container-fluid">
+	<h3><center>Sélectionnez l'un des étudiants suivant:</center></h3>
+	{% for elementListePointage in listeEtudiants %}
+	<script>
+		//alert(Ue);
+	</script>
+	<div class="row justify-content-md-center">
+	<!-- Earnings (Monthly) Card Example -->
+	<div class="col-xl-12 col-md-12 mb-12">
+		<div class="card border-left-success shadow h-100 py-2">
+		<div class="card-body">
+			<div class="row no-gutters align-items-center">
+			<div class="col mr-2">
+				<div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+				<a href="{{ path('adminCoursParEtudiant', {'idEtudiant': elementListePointage.id  }) }}" value="{{ elementListePointage.id }}" / style="display: block;
+				width: 600px;
+				height: 55px;
+				background: #4E9CAF;
+				padding: 10px;
+				font-size:20px;
+				text-align: center;
+				border-radius: 5px;
+				color: white;
+				font-weight: bold; 
+				vertical-align:center;">{{ elementListePointage.prenomUtilisateur }} {{ elementListePointage.nomUtilisateur }}</a></div>
+				<div class="h4 mb-0 font-weight-bold text-gray-800">
+				</div>
+			</div>
+			<div class="col-auto">
+				<a href="{{ path('adminCoursParEtudiant', {'idEtudiant': elementListePointage.id  }) }}" value="{{ elementListePointage.id }}">
+				<i class="fa fa-user  fa-2x text-gray-300"></i>
+				</a>
+			</div>
+			</div>
+		</div>
+		</div>
+	</div>
+</div>
+	{% endfor %}

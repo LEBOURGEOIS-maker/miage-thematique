@@ -1,0 +1,67 @@
+
+
+<div class="container" style="text-align:center;">
+	Cours : <span class="badge badge-pills bg-warning text-light" style="color: blue; font-weight:bold; font-size:20px;">
+	{% for elementListePointage in nomCours %}
+		{{ elementListePointage.nomCours }}	
+	{% endfor %}
+	</span><br /><br />
+  <span class="badge badge-pills bg-primary text-light" style="color: blue; font-weight:bold; font-size:20px;">Liste des enseignants liés au cours</span>
+</div>
+<table id="tableauProfs" class="table-sm table-striped table-hover " width="100%" cellspacing="0">
+	<thead>
+		<tr style='text-align:center'>
+			<th>Nom de l'enseignant</th>
+			<th>Adresse mail</th>
+			<th>n° d'identification</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for elementListePointage in ProfsParCours %}
+			<tr>
+				<td>{{ elementListePointage.nomUtilisateur }} {{ elementListePointage.prenomUtilisateur }}</td>
+				<td>{{ elementListePointage.email }}</td>
+				<td>{{ elementListePointage.numeroEtudiant }}</td>
+			</tr>
+		{% endfor %}
+	</tbody>
+	<tfoot>
+		<tr>
+			<th>Nom de l'enseignant</th>
+			<th>Adresse mail</th>
+			<th>n° d'identification</th>
+		</tr>
+	</tfoot>
+</table>
+<br />
+<div class="container" style="text-align:center;">
+  <span class="badge badge-pills bg-primary text-light" style="color: blue; font-weight:bold; font-size:20px;">Liste des étudiants liés au cours</span>
+</div>
+<table id="tableauEtudiants" class="table-sm table-striped table-hover " width="100%" cellspacing="0">
+	<thead>
+		<tr style='text-align:center'>
+			<th>Formation</th>
+			<th>Adresse mail</th>
+			<th>Numéro étudiant</th>
+			<th>Formation</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for elementListePointage in EtudiantsParCours %}
+			<tr>
+				<td>{{ elementListePointage.nomUtilisateur }} {{ elementListePointage.prenomUtilisateur }}</td>
+				<td>{{ elementListePointage.email }}</td>
+				<td>{{ elementListePointage.numeroEtudiant }}</td>
+				<td>{{ elementListePointage.nomFormation }}</td>
+			</tr>
+		{% endfor %}
+	</tbody>
+	<tfoot>
+		<tr>
+			<th>Nom de l'étudiant</th>
+			<th>Adresse mail</th>
+			<th>Numéro étudiant</th>
+			<th>Formation</th>
+		</tr>
+	</tfoot>
+</table>

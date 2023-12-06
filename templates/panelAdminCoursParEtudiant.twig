@@ -1,0 +1,32 @@
+<div class="container" style="text-align:center;">
+  	<span class="badge badge-pills bg-primary text-light" style="color: blue; font-weight:bold; font-size:20px;">Liste des cours liés à l'étudiant:</span>
+  	<span class="badge badge-pills bg-secondary text-light" style="font-weight:bold; font-size:20px;">
+	          {% set break = false %}
+				{% for elementListePointage in CoursParEtudiant if not break %}
+					{{ elementListePointage.prenomUtilisateur }} {{ elementListePointage.nomUtilisateur }}</span>
+				{% set break = true %}
+				{% endfor %}
+
+</div>
+<table id="tableauAdmin" class="table-sm table-striped table-hover " width="100%" cellspacing="0">
+	<thead>
+		<tr style="text-align:center">
+			<th>Nom du cours</th>
+			<th>N° groupe TD</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for elementListePointage in CoursParEtudiant %}
+			<tr>
+				<td>{{ elementListePointage.nomUe }}</td>
+				<td>{{ elementListePointage.groupeTd }}</td>
+			</tr>
+		{% endfor %}
+	</tbody>
+	<tfoot>
+		<tr>
+			<th>Nom du cours</th>
+			<th>N° groupe TD</th>
+		</tr>
+	</tfoot>
+</table>

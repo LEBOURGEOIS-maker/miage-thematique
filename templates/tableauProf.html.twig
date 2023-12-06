@@ -1,0 +1,27 @@
+{% if listeDePointage != null %}
+<table id=tableauProf class="table-sm table-striped" width="100%" cellspacing="0">
+	<thead>
+		<tr>
+			<th><b>Etudiant</b></th>
+			<th><b>Entrée</b></th>
+			<th><b>Sortie</b></th>
+		</tr>
+	</thead>
+	</head>
+	<tbody>
+		{% for elementListePointage in listeDePointage %}
+			<tr>
+					<td><span class="badge badge-secondary">{{ elementListePointage.numeroEtudiant }}</span>&nbsp;{{ elementListePointage.prenomUtilisateur }} {{ elementListePointage.nomUtilisateur|upper }}</td>
+					<td>{{ elementListePointage.datePointageEntree|date('H:i') }}</td>
+					<td>
+						{% if elementListePointage.datePointageSortie == null %}
+							<span class="badge badge-success">Encore présent</span>
+						{% else %}
+							{{ elementListePointage.datePointageSortie|date('H:i') }}
+						{% endif %}
+					</td>
+			</tr>
+		{% endfor %}
+	</tbody>
+</table>
+{% endif %}

@@ -1,0 +1,32 @@
+<div class="container-fluid">
+	<h3><center>Sélectionnez l'un des cours suivants:</center></h3>
+	{% for elementListePointage in listeCours %}
+	<script>
+		var Ue = '{{ elementListePointage.nomUe }}';
+		//alert(Ue);
+	</script>
+	<div class="row justify-content-md-center">
+	<!-- Earnings (Monthly) Card Example -->
+	<div class="col-xl-12 col-md-12 mb-12">
+		<div class="card border-left-success shadow h-100 py-2">
+		<div class="card-body">
+			<div class="row no-gutters align-items-center">
+			<div class="col mr-2">
+				<div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+					<div class="inner" style="display: inline-block" >
+						<a class="btn btn-primary btn-lg" href="{{ path('adminEtudiantsEtProfsParCours', {'idCours': elementListePointage.id  }) }}" value="{{ elementListePointage.id }}" / >{{ elementListePointage.nomUe }}</a>
+						<span class="badge badge-secondary" style="font-size:16px" >groupe de TD n°{{ elementListePointage.groupeTd }}</span>
+					</div>
+				</div>
+			</div>
+			<div class="col-auto">
+				<a href="{{ path('adminEtudiantsEtProfsParCours', {'idCours': elementListePointage.id  }) }}" value="{{ elementListePointage.id }}">
+				<i class="fa fa-book  fa-2x text-gray-300"></i>
+				</a>
+			</div>
+			</div>
+		</div>
+		</div>
+	</div>
+</div>
+	{% endfor %}

@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edition du pointage{% endblock %}
+
+{% block body %}
+    <h1>Edition du pointage</h1>
+
+    {{ include('pointage/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+
+    <a href="{{ path('pointageDuJour') }}">Retourner à la liste</a>
+
+{% endblock %}

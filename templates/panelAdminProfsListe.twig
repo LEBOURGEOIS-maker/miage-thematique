@@ -1,0 +1,28 @@
+<div class="container-fluid">
+	<h3><center>Sélectionnez l'un des enseignants suivant:</center></h3>
+	{% for elementListePointage in listeProfs %}
+
+	<div class="row justify-content-md-center">
+	<!-- Earnings (Monthly) Card Example -->
+	<div class="col-xl-12 col-md-12 mb-12">
+		<div class="card border-left-success shadow h-100 py-2">
+		<div class="card-body">
+			<div class="row no-gutters align-items-center">
+				<div class="col mr-2">
+					<div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+						<div class="inner" style="display: inline-block" >
+							<a class="btn btn-success btn-lg" href="{{ path('adminCoursParProf', {'idProf': elementListePointage.id  }) }}" value="{{ elementListePointage.id }}" / >{{ elementListePointage.prenomUtilisateur }} {{ elementListePointage.nomUtilisateur }}</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-auto">
+					<a href="{{ path('adminCoursParProf', {'idProf': elementListePointage.id  }) }}" value="{{ elementListePointage.id }}">
+					<i class="fa fa-user  fa-2x text-gray-300"></i>
+					</a>
+				</div>
+			</div>
+		</div>
+		</div>
+	</div>
+</div>
+	{% endfor %}

@@ -1,0 +1,104 @@
+<div class="row">
+
+	<div class="col-xl-3 col-md-3 mb-3">
+		<div class="card border-left-primary shadow h-100 py-2">
+			<div class="card-body">
+				<div class="row no-gutters align-items-center">
+					<div class="col mr-2">
+						<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Nombre de justifications</div>
+						<div class="h4 mb-0 text-gray-800">
+						{% set TotalAbsences = 0 %}
+						{% for elementListePointage in listeDePointage %}
+								{% set TotalAbsences = TotalAbsences + 1 %}
+						{% endfor %}
+
+						{{ TotalAbsences }}
+
+						</div>
+					</div>
+					<div class="col-auto">
+						<a href="#" id="reset"><i class="fas fa-search fa-2x text-gray-300"></i></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-xl-3 col-md-3 mb-3">
+		<div class="card border-left-info shadow h-100 py-2">
+			<div class="card-body">
+				<div class="row no-gutters align-items-center">
+					<div class="col mr-2">
+						<div class="text-xs font-weight-bold text-info text-uppercase mb-1">Validées</div>
+						<div class="h4 mb-0 text-gray-800">
+						{% set Justifie = 0 %}
+						{% for elementListePointage in listeDePointage %}
+							{% if elementListePointage.valider == "2" %}
+								{% set Justifie = Justifie + 1 %}
+							{% endif %}
+						{% endfor %}
+
+						{{ Justifie }}
+						
+						</div>
+					</div>
+					<div class="col-auto">
+						<i class="fas fa-search fa-2x text-gray-300"></i>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-xl-3 col-md-3 mb-3">
+		<div class="card border-left-warning shadow h-100 py-2">
+			<div class="card-body">
+				<div class="row no-gutters align-items-center">
+					<div class="col mr-2">
+						<div class="text-xs font-weight-bold text-warning text-uppercase mb-1">En attentes</div>
+						<div class="h4 mb-0 text-gray-800">
+						{% set NonJustifiee = 0 %}
+						{% for elementListePointage in listeDePointage %}
+							{% if elementListePointage.valider == "0" %}
+								{% set NonJustifiee = NonJustifiee + 1 %}
+							{% endif %}
+						{% endfor %}
+
+						{{ NonJustifiee }}
+						
+						</div>
+					</div>
+					<div class="col-auto">
+						<i class="fas fa-search fa-2x text-gray-300"></i>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-xl-3 col-md-3 mb-3">
+		<div class="card border-left-danger shadow h-100 py-2">
+			<div class="card-body">
+				<div class="row no-gutters align-items-center">
+					<div class="col mr-2">
+						<div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Refusées</div>
+						<div class="h4 mb-0 text-gray-800">
+						{% set JustifRefusees = 0 %}
+						{% for elementListePointage in listeDePointage %}
+							{% if elementListePointage.valider == "1" %}
+								{% set JustifRefusees = JustifRefusees + 1 %}
+							{% endif %}
+						{% endfor %}
+
+						{{ JustifRefusees }}
+						</div>
+					</div>
+					<div class="col-auto">
+						<i class="fas fa-search fa-2x text-gray-300"></i>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>

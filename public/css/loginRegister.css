@@ -1,0 +1,163 @@
+:root {
+	--input-padding-x: 1.5rem;
+	--input-padding-y: 0.75rem;
+}
+
+.login,
+.image {
+	min-height: 100vh;
+}
+
+.bg-image {
+	/*background-image: url('http://papers.co/wallpaper/papers.co-nz44-mac-apple-desk-nomad-nature-6-wallpaper.jpg');*/
+	background-image: url('http://www.danstapub.com/wp-content/uploads/2017/01/apple-desk-motivation-1024x683.jpg');
+	background-size: cover;
+	background-position: center;
+}
+
+.login-heading {
+	font-weight: 300;
+}
+
+.btn-login {
+	font-size: 0.9rem !important;
+	letter-spacing: 0.05rem !important;
+	padding: 0.75rem 1rem !important;
+	border-radius: 2rem !important;
+	transition: all 0.2s;
+}
+
+.form-label-group {
+	position: relative;
+	margin-bottom: 1rem;
+}
+
+.form-label-group>input,
+.form-label-group>label {
+	padding: var(--input-padding-y) var(--input-padding-x);
+	height: auto;
+	border-radius: 2rem;
+}
+
+.form-label-group>label {
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: block;
+	width: 100%;
+	margin-bottom: 0;
+	/* Override default `<label>` margin */
+	line-height: 1.5;
+	color: #495057;
+	cursor: text;
+	/* Match the input under the label */
+	border: 1px solid transparent;
+	border-radius: .25rem;
+	transition: all .1s ease-in-out;
+}
+
+.form-label-group input:-ms-input-placeholder {
+	color: transparent;
+}
+
+.form-label-group input::-ms-input-placeholder {
+	color: transparent;
+}
+
+.form-label-group input::-moz-placeholder {
+	color: transparent;
+}
+
+.form-label-group input::placeholder {
+	color: transparent;
+}
+
+.form-label-group input:not(:placeholder-shown) {
+	padding-top: calc(var(--input-padding-y) + var(--input-padding-y) * (2 / 3));
+	padding-bottom: calc(var(--input-padding-y) / 3);
+}
+
+.form-label-group input:not(:placeholder-shown)~label {
+	padding-top: calc(var(--input-padding-y) / 3);
+	padding-bottom: calc(var(--input-padding-y) / 3);
+	font-size: 12px;
+	color: #777;
+}
+
+.form-label-group select,
+.form-label-group textarea{
+	height: auto;
+	padding: 12px 24px;
+	border-radius: 2rem;
+	max-height: 100px;
+}
+
+textarea {
+  resize: none !important;
+}
+
+.custom-fade {
+	animation: fadein 1s;
+	-moz-animation: fadein 1s;
+	/* Firefox */
+	-webkit-animation: fadein 1s;
+	/* Safari and Chrome */
+	-o-animation: fadein 1s;
+	/* Opera */
+}
+
+@keyframes fadein {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@-moz-keyframes fadein {
+	/* Firefox */
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@-webkit-keyframes fadein {
+	/* Safari and Chrome */
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@-o-keyframes fadein {
+	/* Opera */
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+/* Change this breakpoint if you change the breakpoint of the navbar */
+
+@media (min-width: 992px) {
+  .animate {
+    animation-duration: 0.3s;
+    -webkit-animation-duration: 0.3s;
+    animation-fill-mode: both;
+    -webkit-animation-fill-mode: both;
+  }
+}
+
+@media (min-width: 992px) {
+	.btn:hover {
+		box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.3);
+	}
+}

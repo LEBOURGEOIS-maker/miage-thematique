@@ -1,0 +1,161 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+<link rel="stylesheet" href={{ asset('css/loginRegister.css') }}>
+<link rel="stylesheet" href={{ asset('css/pointage.css') }}>
+{% endblock %}
+{% block body %}
+<div class="container-fluid">
+  <div class="row no-gutter login">
+    <div class="flex-container d-none d-md-flex col-md-4 col-lg-7 bg-color">
+      <div class="clock-column">
+        <div class="num">0</div>
+        <div class="num">1</div>
+        <div class="num">2</div>
+      </div>
+      <div class="clock-column">
+        <div class="num">0</div>
+        <div class="num">1</div>
+        <div class="num">2</div>
+        <div class="num">3</div>
+        <div class="num">4</div>
+        <div class="num">5</div>
+        <div class="num">6</div>
+        <div class="num">7</div>
+        <div class="num">8</div>
+        <div class="num">9</div>
+      </div>
+      <div class="colon"></div>
+      <div class="clock-column">
+        <div class="num">0</div>
+        <div class="num">1</div>
+        <div class="num">2</div>
+        <div class="num">3</div>
+        <div class="num">4</div>
+        <div class="num">5</div>
+      </div>
+      <div class="clock-column">
+        <div class="num">0</div>
+        <div class="num">1</div>
+        <div class="num">2</div>
+        <div class="num">3</div>
+        <div class="num">4</div>
+        <div class="num">5</div>
+        <div class="num">6</div>
+        <div class="num">7</div>
+        <div class="num">8</div>
+        <div class="num">9</div>
+      </div>
+      <div class="colon"></div>
+      <div class="clock-column">
+        <div class="num">0</div>
+        <div class="num">1</div>
+        <div class="num">2</div>
+        <div class="num">3</div>
+        <div class="num">4</div>
+        <div class="num">5</div>
+      </div>
+      <div class="clock-column">
+        <div class="num">0</div>
+        <div class="num">1</div>
+        <div class="num">2</div>
+        <div class="num">3</div>
+        <div class="num">4</div>
+        <div class="num">5</div>
+        <div class="num">6</div>
+        <div class="num">7</div>
+        <div class="num">8</div>
+        <div class="num">9</div>
+      </div>
+    </div>
+    <div   class="col-md-8 col-lg-5">
+      <nav class="navbar navbar-expand-lg navbar-light bg-white shadow custom-nav">
+        <span class="navbar-brand">C<i class="far fa-hourglass"></i>RONOS</span>
+        <!-- Topbar Navbar -->
+        <ul class="navbar-nav ml-auto">
+          <!-- Nav Item - User Information -->
+          <li class="nav-item dropdown no-arrow">
+            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span class="mr-2 d-lg-inline text-gray-600 small">{{ prenom }} {{ nom | upper }}</span>
+            </a>
+            <!-- Dropdown - User Information -->
+            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in mt-2" aria-labelledby="userDropdown">
+              <a class="dropdown-item" href="{{ path('panelEtudiant') }}">
+                <i class="fas fa-home fa-sm fa-fw mr-2 text-gray-400"></i>
+                Accueil
+              </a>
+              <a class="dropdown-item text-primary disabled" href="{{ path('pointage') }}">
+                <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                Badgeuse
+              </a>
+              <a class="dropdown-item" href="{{ path('pointageWeek') }}">
+                <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                Récap' pointage
+              </a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#0" data-toggle="modal" data-target="#logoutModal">
+                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                Déconnexion
+              </a>
+            </div>
+          </li>
+        </ul>
+      </nav>
+      <div class="login d-flex align-items-center py-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 col-lg-12 mx-auto custom-fade">
+              <section class="pricing">
+                <div class="container">
+                  {{ form_start(form) }}
+                  <h3 class="login-heading pt-4 pb-5">Pointage d'entrée en cours : <strong>{{ cours }}</strong></h3>
+                  <!-- <div class="form-label-group">
+                    {{ form_widget(form.commentaireSortie) }}
+                    <div class="text-muted float-right"><span class="count">0</span>/70</div>
+                  </div> -->
+                  <div class="form-label-group">
+                    {{ form_widget(form.connection) }}<a href="{{ path('panelEtudiant') }}" class="btn btn-light text-uppercase ml-2">Annuler</a>
+                  </div>
+                  {{ form_end(form) }}
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Se déconnecter ?</h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">Cliquez sur "Déconnexion" ci-dessous si vous êtes prêt à terminer votre session en cours.</div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
+        <a class="btn btn-danger" href="{{ path('logout') }}">Déconnexion</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block javascripts %}
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $('textarea').keyup(function() {
+            var box = $(this).val();
+            var count = 0 + box.length;
+
+            if(box.length >= 0){
+                $('.count').text(count);
+            }
+            return false;
+        });
+    });
+    </script>
+    <script src="{{ asset('js/clock.js') }}"></script>
+{% endblock %}

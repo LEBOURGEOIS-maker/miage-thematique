@@ -1,0 +1,128 @@
+<table id="tableauAdmin" class="table-sm table-striped table-hover " width="100%" cellspacing="0">
+	<thead>
+		<tr style="text-align:center">
+			<th>Formation</th>
+			<th>Date de la justification</th>
+			<th>Début de l'absence</th>
+			<th>Fin de l'absence</th>
+			<th>Etudiant</th>
+			<th>Justificatif</th>	
+			<th>Etat</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for elementListePointage in listeDePointage %}
+			<tr>
+				<td>{{ elementListePointage.formation }}</td>
+				<td>{{ elementListePointage.date }}</td>
+				<td>
+					<span class="badge badge-pills bg-primary text-light">{{ elementListePointage.dateDebut }}</span>
+					<span class="badge badge-pills bg-primary text-light">{{ elementListePointage.heureDebut|date('H:i') }}</span>
+				</td>
+				<td>
+					<span class="badge badge-pills bg-primary text-light">{{ elementListePointage.dateFin }}</span>
+					<span class="badge badge-pills bg-primary text-light">{{ elementListePointage.heureFin|date('H:i') }}</span>
+				</td>
+				<td>{{ elementListePointage.prenomUtilisateur }} {{ elementListePointage.nomUtilisateur }}</td>
+				<td ><a target="_blank" href="{{ asset('uploads/justifications/' ~ elementListePointage.lienFichier) }}">
+					<img style="margin: 0 35%" width="30" height="30" src="/~david.devoye/chronos_gr2_2019-2020/public/uploads/logo_download.png"></a>
+				</td>		
+				<td>
+					{% if elementListePointage.valider == "0" %}
+						<span style="color:orange;" value="0">En attente de validation</span>
+					{% endif %}
+					{% if elementListePointage.valider == "1" %}
+						<span style="color:red;" value="1">Justification refusée</span>
+					{% endif %}
+					{% if elementListePointage.valider == "2" %}
+						<span style="color:green;" value="2">Justification validée</span>
+					{% endif %}					
+				</td>	
+				<td>
+					<div style="display: inline-block">
+						<input type="hidden" value="{{ elementListePointage.id }}" class="abs_id">
+						<input type="hidden" value="{{ elementListePointage.prenomUtilisateur }} {{ elementListePointage.nomUtilisateur }}" class="abs_etudiant">
+						<input type="hidden" value="{{ elementListePointage.email }}" class="abs_mail">
+						{% if elementListePointage.valider == "0" %}
+						<select type="text" class="form-control col-lg-12 valider Selector" style="color:orange">
+								<option style="color:orange;" value="0">En attente de validation</option>
+								<option style="color:red;" value="1">Justification refusée</option>
+								<option style="color:green;" value="2">Justification validée</option>
+						</select>
+						{% endif %}
+						{% if elementListePointage.valider == "1" %}
+							<select type="text" class="form-control col-lg-12 valider Selector" style="color:red">
+								<option style="color:red;" value="1">Justification refusée</option>
+								<option style="color:orange;" value="0">En attente de validation</option>
+								<option style="color:green;" value="2">Justification validée</option>
+					
+							</select>
+						{% endif %}
+						{% if elementListePointage.valider == "2" %}
+							<select type="text" class="form-control col-lg-12 valider Selector" style="color:green">
+								<option style="color:green;" value="2">Justification validée</option>
+								<option style="color:orange;" value="0">En attente de validation</option>
+								<option style="color:red;" value="1">Justification refusée</option>
+							</select>
+						{% endif %}
+					</div>
+					<div class="statutJustif">Etat modifié!</div>
+				</td>
+			</tr>
+		{% endfor %}
+	</tbody>
+	<tfoot>
+		<tr>
+			<th>Formation</th>
+			<th>Date de la justification</th>
+			<th>Début de l'absence</th>
+			<th>Fin de l'absence</th>
+			<th>Etudiant</th>
+			<th>Justificatif</th>	
+			<th>Etat</th>
+			<th>Modifier le justificatif</th>	
+		</tr>
+	</tfoot>
+</table>
+
+{% block javascripts %}
+  <script>
+  $(".statutJustif").hide();
+  // l ajax n est pas rangé dans un fichier JS dû à l'appel des paths, qui ne sont pas interprété dans fichier .js, seulement dans un .twig (voir doc officiel de Symfony)
+  $(".Selector").change(function(e){
+	e.preventDefault();
+ 	e.stopImmediatePropagation();
+	$.ajax({
+		method: "POST",
+		url: "{{ path('panelAdminUpdateState') }}",
+		data: { id: $(this).closest('tr').find('.abs_id').val(),
+				valider: $(this).closest('tr').find('.valider').val()
+				}
+		})
+		.done(function( msg ) {
+			//alert( "Data Saved: " + msg );
+		})
+		.fail(function() {
+			//alert("error update");
+		});
+	$.ajax({
+		method: "POST",
+		url: "{{ path('panelAdminAbsenceSendMail') }}",
+		data: { id: $(this).closest('tr').find('.abs_id').val(),
+				etudiant: $(this).closest('tr').find('.abs_etudiant').val(),
+				email: $(this).closest('tr').find('.abs_mail').val(),
+				valider: $(this).closest('tr').find('.valider').val()
+				}
+		})
+		.done(function( msg ) {
+			//alert("error mail");
+		})
+		.fail(function() {
+			//alert("error mail");
+		})
+		$(this).closest('tr').find(".statutJustif").show();
+    }
+);
+  </script>
+  {% endblock %}

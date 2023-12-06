@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CHRONOS ADMIN - Dashboard{% endblock %}
+{% block stylesheetsAdmin %}
+<link rel="stylesheet" href={{ asset('css/sb-admin-2.min.css') }}>
+{% endblock %}
+
+{% block body %}
+<!-- Page Content -->
+  <div class="container">
+
+    <!-- Jumbotron Header -->
+    <header class="jumbotron my-4">
+	<div class="col-lg-4" style="float:right">
+		<div id="element1" style="display:inline-block;">
+			<a href="{{ path('profListeCours') }}" class="btn  btn-block btn-primary">Historique des émargements</a>
+		</div>
+		<div id="element2" style="display:inline-block;">
+			<a href="{{ path('logout') }}" class="btn btn-block btn-danger">Quitter</a>
+		</div>
+	</div>
+      <h1 class="display-3">Émargement</h1>
+      <p class="lead">Sélectionnez le cours pour visualiser les pointages effectués aujourd'hui pour ce cours.</p>
+      {{ form(form) }}
+			{% if newpointage != null %}
+			<div class="row justify-content-md-center">
+				<div class="col-xl-4 col-md-4 mb-4">
+					<div class="card border-left-primary shadow h-100 py-2">
+						<div class="card-body">
+							<div class="row no-gutters align-items-center">
+								<div class="col mr-2">
+									<div class="font-weight-bold text-warning text-uppercase mb-1">{{ newpointage.nomUe }}<span class="h6 text-muted text-xs"> {{ newpointage.plageHoraire }}</span></div>
+									<div class="h4 mb-0 text-gray-800">{{nbpointage}} pointage{% if nbpointage > 1 %}s{% endif %}</div>
+								</div>
+								<div class="col-auto">
+									<i class="fas fa-search fa-2x text-gray-300"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			{% endif %}
+			{% include 'tableauProf.html.twig' %}
+			<br>
+			<i class="fas fa-info-circle"></i> Le rafraichissement du tableau est automatique
+    </header>
+  </div>
+  <!-- /.container -->
+<script src="{{ asset('js/initProf.js') }}"></script>
+<script>
+setTimeout(function () {
+  if(document.getElementByID("pointage_filtre_cours")!="")
+		document.forms[0].submit();
+}, 5000);
+</script>
+{% endblock %}

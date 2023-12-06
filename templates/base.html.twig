@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="Chronos - Outil de contrôle d'assiduité pour les élèves de Master MIAGE">
+        <meta name="author" content="Alexandre LELONG / David DEVOYE / Bastien DEVILLERS / Axel BOURSIN">
+        <title>{% block title %}Chronos{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        {% block head_css %}
+            <link rel="stylesheet" type="text/css" href="{{ asset('vendor/Bootstrap/bootstrap.min.css')}}">
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+            <link rel="stylesheet" type="text/css" href="{{ asset('vendor/DataTables/datatables.min.css')}}"/>
+            <link rel="stylesheet" type="text/css" href="{{ asset('vendor/AirDatePicker/datepicker.min.css')}}"/>
+        {% endblock %}
+        {% block stylesheetsAdmin %}{% endblock %}
+        {% block head_js %}
+            <script src="{{ asset('vendor/jQuery/jquery-3.3.1.min.js')}}"></script>
+            <script src="{{ asset('vendor/Bootstrap/bootstrap.bundle.min.js') }}"></script>
+            <script src="{{ asset('vendor/DataTables/datatables.min.js') }}"></script>
+            <script src="{{ asset('vendor/AirDatePicker/datepicker.min.js') }}"></script>
+            <script src="{{ asset('vendor/AirDatePicker/datepicker.fr.js') }}"></script>
+        {% endblock %}
+    </head>
+    <body id="page-top">
+        {% block body %}{% endblock %}
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

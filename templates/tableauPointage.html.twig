@@ -1,0 +1,72 @@
+<table id="tableauAdmin" class="table-sm table-striped table-hover " width="100%" cellspacing="0">
+	<thead>
+		<tr>
+			<td>Formation</td>
+			<td>Date</td>
+			<th>Entrée</th>
+			<th>Sortie</th>
+			<th></th>
+			<td>Cours</td>
+			<td>Etudiant</td>
+			<th></th>
+			<th>Anomalies</th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+	</head>
+	<tbody>
+		{% for elementListePointage in listeDePointage %}
+			<tr>
+					<td>{{ elementListePointage.nomFormation }}</td>
+					<td>{{ elementListePointage.datePointageEntree|date('d/m/Y') }}</td>
+					<td>{{ elementListePointage.datePointageEntree|date('H:i') }}</td>
+					<td>
+						{% if elementListePointage.datePointageSortie == null %}
+							<a href="{{ path('valider_pointage', {'id': elementListePointage.id}) }}" class="btn btn-sm btn-primary w-75" id="validation"><i class="fas fa-check"></i></a>
+						{% else %}
+							{{ elementListePointage.datePointageSortie|date('H:i') }}
+						{% endif %}
+					</td>
+					<td><span class="badge badge-pills bg-info text-light">{{ elementListePointage.plageHoraire }}</span></td>
+					<td>{{ elementListePointage.nomUe }}</td>
+					<td>{{ elementListePointage.prenomUtilisateur }} {{ elementListePointage.nomUtilisateur }}</td>
+					<td>{{ elementListePointage.retard }}</td>
+					<td>
+					{% if elementListePointage.commentaire is null %}
+					{% else %}
+						<i class="far fa-comment-dots fa-lg" data-toggle="tooltip" data-placement="top" title="{{ elementListePointage.commentaire }}"></i>
+					{% endif %}
+					</td>
+					<td>{{ elementListePointage.partiEnAvance }}</td>
+					<td>
+					{% if elementListePointage.commentaireSortie is null %}
+					{% else %}
+						<i class="far fa-comment-dots fa-lg" data-toggle="tooltip" data-placement="top" title="{{ elementListePointage.commentaireSortie }}"></i>
+					{% endif %}
+					</td>
+					<td>{{ elementListePointage.PointeParAdmin }}</td>
+					<td></td>
+			</tr>
+		{% endfor %}
+	</tbody>
+	<tfoot>
+		<tr>
+			<th>Formation</th>
+			<th>Date</th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th>Cours</th>
+			<th>Etudiant</th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+		</tr>
+	</tfoot>
+</table>

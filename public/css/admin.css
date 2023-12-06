@@ -1,0 +1,42 @@
+th.dt-center, td.dt-center {
+  text-align: center !important;
+}
+
+th.dt-right, td.dt-right {
+  text-align: right !important;
+}
+
+/* Right aligning the export button */
+div.dt-buttons {
+    float: right;
+}
+.dataTables_wrapper .dataTables_filter {
+    float: left;
+}
+
+.buttons-collection{
+  border-radius: 4px !important;
+}
+
+.tooltip-inner {
+    font-size: 1.01rem !important;
+}
+
+.dateInput{
+    font-size: small !important;
+    height: auto !important;
+}
+
+/* Modifier statut d'une justification - admin */
+.statutJustif{
+  display: block;
+  width: auto;
+  padding:5px;
+  text-align: center;
+  border-radius: 4px;
+  margin-bottom: 5px;
+  color:#FFF;
+}
+.statutJustif{
+  background-color: #27ae60;
+}
